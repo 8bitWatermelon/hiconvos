@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -23,6 +24,7 @@ export default function RootLayout({
     >
       <body className={cn('relative antialiased', inter.className)}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
