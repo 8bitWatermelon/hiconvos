@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import SignInButtons from './sign-in-buttons';
+import SignInButtons from '../_components/sign-in-buttons';
 
 export default function Page() {
   return (
