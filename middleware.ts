@@ -8,5 +8,14 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ['/chat', '/(api|trpc)(.*)'],
+  matcher: [
+    // All chat routes and sub-sequent routes of chat
+
+    '/chat',
+    '/chat/add',
+
+    // All api/trpc routes and sub-sequent routes of api/trpc
+
+    '/(api|trpc)(.*)',
+  ],
 };

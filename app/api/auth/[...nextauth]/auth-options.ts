@@ -4,6 +4,12 @@ import GitHubProvider from 'next-auth/providers/github';
 import { UpstashRedisAdapter } from '@auth/upstash-redis-adapter';
 import { rdb } from '@/lib/redis';
 import { User } from '@/types';
+import { getServerSession } from 'next-auth';
+import type {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from 'next';
 
 export const options = {
   adapter: UpstashRedisAdapter(rdb),
@@ -56,3 +62,14 @@ export const options = {
   },
   secret: process.env.NEXTAUTH_SECRET,
 } satisfies NextAuthOptions;
+
+// Provides a server context for sessions.
+
+export function auth(
+  ...args:
+    | [GetServerSidePropsContext['req'], GetServerSidePropsContext['res']]
+    | [NextApiRequest, NextApiResponse]
+    | []
+) {
+  return getServerSession(...args, options);
+}
